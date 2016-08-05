@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		3F247FEB1D54565500A0F837 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F247FEA1D54565500A0F837 /* main.m */; };
 		3F247FF41D54565500A0F837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F247FF21D54565500A0F837 /* Main.storyboard */; };
-		3F247FF61D54565500A0F837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F247FF51D54565500A0F837 /* Assets.xcassets */; };
 		3F247FF91D54565500A0F837 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F247FF71D54565500A0F837 /* LaunchScreen.storyboard */; };
 		3F2481421D54573400A0F837 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F24801C1D54573400A0F837 /* AppDelegate.m */; };
+		3F32462D1D5479920081CBB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F32462C1D5479920081CBB6 /* Assets.xcassets */; };
 		3F526E591D54597600B09F6B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F526E3F1D54597600B09F6B /* Info.plist */; };
 		3F526E5A1D54597600B09F6B /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F526E411D54597600B09F6B /* MASCompositeConstraint.m */; };
 		3F526E5B1D54597600B09F6B /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F526E441D54597600B09F6B /* MASConstraint.m */; };
@@ -43,11 +43,11 @@
 		3F247FE61D54565500A0F837 /* MeiTuanDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiTuanDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F247FEA1D54565500A0F837 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F247FF31D54565500A0F837 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3F247FF51D54565500A0F837 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F247FF81D54565500A0F837 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F247FFA1D54565500A0F837 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F24801B1D54573400A0F837 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F24801C1D54573400A0F837 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F32462C1D5479920081CBB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F526E3F1D54597600B09F6B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F526E401D54597600B09F6B /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		3F526E411D54597600B09F6B /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
@@ -141,9 +141,9 @@
 				3F24801A1D54573400A0F837 /* Others */,
 				3F24801F1D54573400A0F837 /* ThirdLibs */,
 				3F247FF21D54565500A0F837 /* Main.storyboard */,
-				3F247FF51D54565500A0F837 /* Assets.xcassets */,
 				3F247FF71D54565500A0F837 /* LaunchScreen.storyboard */,
 				3F247FFA1D54565500A0F837 /* Info.plist */,
+				3F32462C1D5479920081CBB6 /* Assets.xcassets */,
 				3F247FE91D54565500A0F837 /* Supporting Files */,
 			);
 			path = MeiTuanDemo;
@@ -464,7 +464,7 @@
 			files = (
 				3F526E591D54597600B09F6B /* Info.plist in Resources */,
 				3F247FF91D54565500A0F837 /* LaunchScreen.storyboard in Resources */,
-				3F247FF61D54565500A0F837 /* Assets.xcassets in Resources */,
+				3F32462D1D5479920081CBB6 /* Assets.xcassets in Resources */,
 				3F247FF41D54565500A0F837 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,7 +613,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				GCC_PREFIX_HEADER = "MeiTuanDemo/Others/MJ-PrefixHeader.pch";
 				INFOPLIST_FILE = MeiTuanDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -626,7 +625,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				GCC_PREFIX_HEADER = "MeiTuanDemo/Others/MJ-PrefixHeader.pch";
 				INFOPLIST_FILE = MeiTuanDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
