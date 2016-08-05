@@ -1,0 +1,29 @@
+//
+//  PrefixHeader.pch
+//  MeiTuanDemo
+//
+//  Created by kimi on 8/5/16.
+//  Copyright © 2016 kimi. All rights reserved.
+//
+
+#if __OBJC__
+
+// 1.定义常用的宏
+
+// 2.导入常用的头文件
+#import "Addition.h"
+#import "Masonry.h"
+//#import "UIImageView+WebCache.h"
+//#import "SVProgressHUD.h"
+
+// 3.自定义log
+/**
+ * 调试的宏
+ */
+#ifdef DEBUG
+#define NSLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define NSLog(...)
+#endif
+
+#endif
