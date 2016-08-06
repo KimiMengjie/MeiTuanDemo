@@ -38,10 +38,10 @@
     UIViewController* vc = [[Clz alloc] init];
     
     // 设置标题
-    //    vc.tabBarItem.title = title;
+        vc.tabBarItem.title = title;
     //    vc.navigationItem.title = title;
     
-    vc.title = title; // navBar和tabbar的title都会找这个值
+//    vc.title = title; // navBar和tabbar的title都会找这个值
     
     // 获取image
     UIImage* image = [UIImage imageNamed:imageName];
