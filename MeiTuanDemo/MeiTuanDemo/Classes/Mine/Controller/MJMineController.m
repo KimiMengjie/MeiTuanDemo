@@ -9,8 +9,7 @@
 #import "MJMineController.h"
 #import "MJMineModel.h"
 #import "MJMineCell.h"
-#import "MJMineInfoCell.h"
-#import "MJMineFlowLayout.h"
+
 
 #define kFirstSectionOptionCount 3
 #define kSecondSectionOptionCount 2
@@ -26,7 +25,7 @@ static NSString *bottom_cell_id = @"bottom_cell";
 @interface MJMineController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)NSArray <MJMineModel *> *infosArray;    //我的评价...更多
-
+@property (nonatomic,weak)UITableView *tableView;
 @end
 
 @implementation MJMineController
@@ -43,16 +42,14 @@ static NSString *bottom_cell_id = @"bottom_cell";
 - (void)setupUI
 {
     
-    UIView *headerView = [[UIView alloc]init];
-    headerView.backgroundColor = [UIColor redColor];
-    
-    [self.view addSubview:headerView];
-    
+    // self.automaticallyAdjustsScrollViewInsets = false;
     UITableViewController *tabelVC = [[UITableViewController alloc]initWithStyle:UITableViewStyleGrouped];
     //加入视图
     [self.view addSubview:tabelVC.view];
     //父子控制器
     [self addChildViewController:tabelVC];
+    
+    self.tableView = tabelVC.tableView;
     
     //注册cell
     [tabelVC.tableView registerNib:[UINib nibWithNibName:@"MJMineCell" bundle:nil]  forCellReuseIdentifier:info_cell_id];
@@ -68,23 +65,39 @@ static NSString *bottom_cell_id = @"bottom_cell";
     //取消显示导航栏
     [super.navigationController setNavigationBarHidden:YES animated:NO];
     [super.navigationController setToolbarHidden:YES animated:NO];
-    //取消header头
     
-    //取消粘连性
-    tabelVC.tableView.tableHeaderView.hidden = YES;
+    //预估行高
+//    self.tableView.estimatedRowHeight = 250;
+    //自动计算行高
+//    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    //取消分割线
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    
+    //设置headView
+    UIImage *headImage = [UIImage imageNamed:@"bg_mine_account_image"];
+    UIImageView *headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200)];
+    headImageView.image = headImage;
+    headImageView.clipsToBounds = true;
+    //设置headImageView风格
+    headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    //添加到head上
+    self.tableView.tableHeaderView = headImageView;
     
     //自动布局
-    [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.offset(0);
-        make.height.offset(200);
-    }];
     
     [tabelVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.offset(0);
-        make.top.equalTo(headerView.mas_bottom);
+        make.top.offset(0);
     }];
     
+    //添加footerView
+    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 50)];
+    self.tableView.tableFooterView = footView;
     
+    //设置footView
+    footView.backgroundColor = [UIColor redColor];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -166,6 +179,23 @@ static NSString *bottom_cell_id = @"bottom_cell";
         _infosArray = array.copy;
     }
     return _infosArray;
+}
+
+//去掉 UItableview headerview 黏性(sticky)
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.tableView)
+    {
+        CGFloat sectionHeaderHeight = 60; //sectionHeaderHeight
+        if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        } else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
+            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+        }
+    }
+}
+
+- (BOOL)prefersStatusBarHidden{
+    return YES;
 }
 
 @end

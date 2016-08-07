@@ -11,9 +11,6 @@
 		3F1973CD1D55F3D700778B34 /* MJMineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1973CB1D55F3D700778B34 /* MJMineCell.m */; };
 		3F1973CE1D55F3D700778B34 /* MJMineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F1973CC1D55F3D700778B34 /* MJMineCell.xib */; };
 		3F1973D11D55F55A00778B34 /* MJMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1973D01D55F55A00778B34 /* MJMineModel.m */; };
-		3F1973D51D56036500778B34 /* MJMineInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1973D31D56036500778B34 /* MJMineInfoCell.m */; };
-		3F1973D61D56036500778B34 /* MJMineInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F1973D41D56036500778B34 /* MJMineInfoCell.xib */; };
-		3F1973D91D56061300778B34 /* MJMineFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1973D81D56061300778B34 /* MJMineFlowLayout.m */; };
 		3F247FEB1D54565500A0F837 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F247FEA1D54565500A0F837 /* main.m */; };
 		3F247FF41D54565500A0F837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F247FF21D54565500A0F837 /* Main.storyboard */; };
 		3F247FF91D54565500A0F837 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F247FF71D54565500A0F837 /* LaunchScreen.storyboard */; };
@@ -53,11 +50,6 @@
 		3F1973CC1D55F3D700778B34 /* MJMineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MJMineCell.xib; path = MeiTuanDemo/Classes/Mine/Controller/MJMineCell.xib; sourceTree = SOURCE_ROOT; };
 		3F1973CF1D55F55A00778B34 /* MJMineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJMineModel.h; path = MeiTuanDemo/Classes/Mine/Controller/MJMineModel.h; sourceTree = SOURCE_ROOT; };
 		3F1973D01D55F55A00778B34 /* MJMineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MJMineModel.m; path = MeiTuanDemo/Classes/Mine/Controller/MJMineModel.m; sourceTree = SOURCE_ROOT; };
-		3F1973D21D56036500778B34 /* MJMineInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJMineInfoCell.h; path = MeiTuanDemo/Classes/Mine/Controller/MJMineInfoCell.h; sourceTree = SOURCE_ROOT; };
-		3F1973D31D56036500778B34 /* MJMineInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MJMineInfoCell.m; path = MeiTuanDemo/Classes/Mine/Controller/MJMineInfoCell.m; sourceTree = SOURCE_ROOT; };
-		3F1973D41D56036500778B34 /* MJMineInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MJMineInfoCell.xib; path = MeiTuanDemo/Classes/Mine/Controller/MJMineInfoCell.xib; sourceTree = SOURCE_ROOT; };
-		3F1973D71D56061300778B34 /* MJMineFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJMineFlowLayout.h; path = MeiTuanDemo/Classes/Mine/Controller/MJMineFlowLayout.h; sourceTree = SOURCE_ROOT; };
-		3F1973D81D56061300778B34 /* MJMineFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MJMineFlowLayout.m; path = MeiTuanDemo/Classes/Mine/Controller/MJMineFlowLayout.m; sourceTree = SOURCE_ROOT; };
 		3F247FE61D54565500A0F837 /* MeiTuanDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiTuanDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F247FEA1D54565500A0F837 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F247FF31D54565500A0F837 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -289,11 +281,6 @@
 				3F1973CA1D55F3D700778B34 /* MJMineCell.h */,
 				3F1973CB1D55F3D700778B34 /* MJMineCell.m */,
 				3F1973CC1D55F3D700778B34 /* MJMineCell.xib */,
-				3F1973D21D56036500778B34 /* MJMineInfoCell.h */,
-				3F1973D31D56036500778B34 /* MJMineInfoCell.m */,
-				3F1973D41D56036500778B34 /* MJMineInfoCell.xib */,
-				3F1973D71D56061300778B34 /* MJMineFlowLayout.h */,
-				3F1973D81D56061300778B34 /* MJMineFlowLayout.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -491,7 +478,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F1973D61D56036500778B34 /* MJMineInfoCell.xib in Resources */,
 				3F1973C91D55EE7500778B34 /* mineInfo.plist in Resources */,
 				3F1973CE1D55F3D700778B34 /* MJMineCell.xib in Resources */,
 				3F526E591D54597600B09F6B /* Info.plist in Resources */,
@@ -519,7 +505,6 @@
 				3F526E851D545C8E00B09F6B /* NSObject+Addition.m in Sources */,
 				3F526E981D545D7000B09F6B /* MJMineController.m in Sources */,
 				3F526E841D545C8E00B09F6B /* NSAttributedString+Additon.m in Sources */,
-				3F1973D91D56061300778B34 /* MJMineFlowLayout.m in Sources */,
 				3F526E951D545D5A00B09F6B /* MJOrderController.m in Sources */,
 				3F526E611D54597600B09F6B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3F526E6A1D545AE400B09F6B /* MJTabBarController.m in Sources */,
@@ -531,7 +516,6 @@
 				3F526E891D545C8E00B09F6B /* UIImage+Blur.m in Sources */,
 				3F526E601D54597600B09F6B /* NSArray+MASAdditions.m in Sources */,
 				3F1973D11D55F55A00778B34 /* MJMineModel.m in Sources */,
-				3F1973D51D56036500778B34 /* MJMineInfoCell.m in Sources */,
 				3F526E5D1D54597600B09F6B /* MASLayoutConstraint.m in Sources */,
 				3F526E8F1D545D3500B09F6B /* MJHomeController.m in Sources */,
 				3F526E8A1D545C8E00B09F6B /* UILabel+Addition.m in Sources */,
