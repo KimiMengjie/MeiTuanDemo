@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MJMineController : UICollectionViewController
+@interface MJMineController : UIViewController
 
 @end

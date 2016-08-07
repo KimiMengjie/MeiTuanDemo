@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MJMineModel;
-@interface MJMineCell : UICollectionViewCell
+@interface MJMineCell : UITableViewCell
 
 @property (nonatomic,strong) MJMineModel *mineModel;
 

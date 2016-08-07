@@ -23,7 +23,7 @@ static NSString *info_cell_id = @"info_cell";
 static NSString *title_cell_id = @"title_cell";
 static NSString *bottom_cell_id = @"bottom_cell";
 
-@interface MJMineController ()<UICollectionViewDelegateFlowLayout>
+@interface MJMineController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)NSArray <MJMineModel *> *infosArray;    //我的评价...更多
 
@@ -31,13 +31,7 @@ static NSString *bottom_cell_id = @"bottom_cell";
 
 @implementation MJMineController
 
--(instancetype)init
-{
-    //创建布局
-    MJMineFlowLayout *flowLayout = [[MJMineFlowLayout alloc]init];
-    
-    return [super initWithCollectionViewLayout:flowLayout];
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,94 +42,110 @@ static NSString *bottom_cell_id = @"bottom_cell";
 
 - (void)setupUI
 {
-    [self.collectionView registerNib:[UINib nibWithNibName:@"MJMineCell" bundle:nil] forCellWithReuseIdentifier:info_cell_id];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"MJMineInfoCell" bundle:nil] forCellWithReuseIdentifier:title_cell_id];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:bottom_cell_id];
+    
+    UIView *headerView = [[UIView alloc]init];
+    headerView.backgroundColor = [UIColor redColor];
+    
+    [self.view addSubview:headerView];
+    
+    UITableViewController *tabelVC = [[UITableViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    //加入视图
+    [self.view addSubview:tabelVC.view];
+    //父子控制器
+    [self addChildViewController:tabelVC];
+    
+    //注册cell
+    [tabelVC.tableView registerNib:[UINib nibWithNibName:@"MJMineCell" bundle:nil]  forCellReuseIdentifier:info_cell_id];
+    [tabelVC.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:bottom_cell_id];
+    
+    //设置代理
+    tabelVC.tableView.delegate = self;
+    tabelVC.tableView.dataSource = self;
     
     // 背景颜色
-    self.collectionView.backgroundColor = [UIColor colorWithHex:0xf5f5f9];
+    tabelVC.tableView.backgroundColor = [UIColor colorWithHex:0xf5f5f9];
     
     //取消显示导航栏
     [super.navigationController setNavigationBarHidden:YES animated:NO];
     [super.navigationController setToolbarHidden:YES animated:NO];
+    //取消header头
     
-
+    //取消粘连性
+    tabelVC.tableView.tableHeaderView.hidden = YES;
+    
+    //自动布局
+    [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.offset(0);
+        make.height.offset(200);
+    }];
+    
+    [tabelVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.offset(0);
+        make.top.equalTo(headerView.mas_bottom);
+    }];
+    
+    
 }
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return 5;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 1;
-    }else if (section == 1){
+    if (section == 0){
         return kFirstSectionOptionCount;
-    }else if (section == 2){
+    }else if (section == 1){
         return kSecondSectionOptionCount;
-    }else if (section == 3){
+    }else if (section == 2){
         return kThirdSectionOptionCount;
-    }else if (section == 4){
+    }else if (section == 3){
         return kFourthSectionOptionCount;
     }else {
         return kFifthSectionOptionCount;
     }
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //获取数据
     MJMineModel *model =[[MJMineModel alloc]init];
     
     if (indexPath.section == 0) {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:title_cell_id forIndexPath:indexPath];
-    }else{
+        model = self.infosArray[indexPath.row];
+    }
+    if (indexPath.section == 1) {
+        model = self.infosArray[indexPath.row + kFirstSectionOptionCount];
+    }
+    if (indexPath.section == 2) {
+        model = self.infosArray[indexPath.row + kFirstSectionOptionCount + kSecondSectionOptionCount];
+    }
+    if (indexPath.section == 3) {
+        model = self.infosArray[indexPath.row + kFirstSectionOptionCount + kSecondSectionOptionCount + kThirdSectionOptionCount];
+    }
+    if (indexPath.section == 4) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:bottom_cell_id forIndexPath:indexPath];
         
-        if (indexPath.section == 1) {
-            model = self.infosArray[indexPath.item];
-        }
-        if (indexPath.section == 2) {
-            model = self.infosArray[indexPath.item + kFirstSectionOptionCount];
-        }
-        if (indexPath.section == 3) {
-            model = self.infosArray[indexPath.item + kFirstSectionOptionCount + kSecondSectionOptionCount];
-        }
-        if (indexPath.section == 4) {
-            model = self.infosArray[indexPath.item + kFirstSectionOptionCount + kSecondSectionOptionCount + kThirdSectionOptionCount];
-        }
-        if (indexPath.section == 5) {
-            UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bottom_cell_id forIndexPath:indexPath];
-            
-            cell.backgroundColor = [UIColor whiteColor];
-            
-            UILabel *label = [UILabel labelWithText:@"客服电话:10109777" andTextColor:[UIColor orangeColor] andFontSize:14.0];
-            [cell.contentView addSubview:label];
-            
-            [label mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.center.equalTo(cell);
-            }];
-            return cell;
-        }
-        // 获取cell
-        MJMineCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:info_cell_id forIndexPath:indexPath];
-        // 把数据传递给cell
-        cell.mineModel = model;
+        cell.backgroundColor = [UIColor whiteColor];
         
+        UILabel *label = [UILabel labelWithText:@"客服电话:10109777" andTextColor:[UIColor orangeColor] andFontSize:14.0];
+        [cell.contentView addSubview:label];
+        
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(cell);
+        }];
         return cell;
     }
+    // 获取cell
+    MJMineCell *cell = [tableView dequeueReusableCellWithIdentifier:info_cell_id forIndexPath:indexPath];
+    // 把数据传递给cell
+    cell.mineModel = model;
+    
+    return cell;
 }
 
-// 遵守协议<collectionViewDelegateFlowLayout> 根据系统询问的indexPath(位置) 告诉系统应该有的高度
-- (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath*)indexPath
-{
-    if (indexPath.section == 0) {
-        return CGSizeMake(self.collectionView.bounds.size.width, 200);
-    }
-    else  {
-        return CGSizeMake(self.collectionView.bounds.size.width, 60);
-    }
-}
+
 
 #pragma mark - 懒加载
 
